@@ -13,6 +13,31 @@
   border-radius: 5px;
   background: $daily-word-bg;
 
+  .timestamp {
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: center;
+    align-items: center;
+
+    background: gray;
+
+    .month, .day, .year {
+      font-weight: 550;
+    }
+
+    .month {
+      font-size: 20px;
+    }
+
+    .day {
+      font-size: 22px;
+    }
+
+    .year {
+      font-size: 18px;
+    }
+  }
+
   .word {
     margin: 0;
     font-size: 22px;
