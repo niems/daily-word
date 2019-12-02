@@ -1,10 +1,13 @@
 .daily-word {
   box-sizing: border-box;
-  display: flex;
-  flex-flow: column nowrap;
-  justify-content: center;
-  align-items: flex-start;
-  flex: 0 1 150px;
+  display: grid;
+  grid-template-rows: 1fr repeat(3, auto) 1fr;
+  grid-template-columns: minmax(auto, 80px) 1fr 1rem;
+  grid-template-areas: ". . ."
+                       "date word ."
+                       "date definition ."
+                       "date example ."
+                       ". . .";
 
   border: 1px solid $separator-bg;
   margin: 0.5rem 0;
@@ -14,37 +17,46 @@
   background: $daily-word-bg;
 
   .timestamp {
+    grid-area: date;
     display: flex;
     flex-flow: column nowrap;
     justify-content: center;
     align-items: center;
 
-    background: gray;
+    margin: 0;
+    margin-right: 0.75rem;
+    border-right: 1px solid black;
 
     .month, .day, .year {
       font-weight: 550;
     }
 
     .month {
-      font-size: 20px;
-    }
-
-    .day {
       font-size: 22px;
     }
 
+    .day {
+      font-size: 26px;
+    }
+
     .year {
-      font-size: 18px;
+      font-size: 20px;
     }
   }
 
   .word {
+    grid-area: word;
     margin: 0;
     font-size: 22px;
     font-weight: 700;
   }
 
+  .definition {
+    grid-area: definition;
+  }
+
   .example {
+    grid-area: example;
     font-weight: 300;
   }
 
