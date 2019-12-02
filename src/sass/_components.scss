@@ -1,0 +1,30 @@
+.daily-word {
+  box-sizing: border-box;
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: center;
+  align-items: flex-start;
+  flex: 0 1 150px;
+
+  border: 1px solid black;
+  margin: 0.5rem 0;
+  padding: 1rem;
+
+  border-radius: 5px;
+  background: white;
+
+  .word {
+    margin: 0;
+    font-size: 22px;
+    font-weight: 700;
+  }
+
+  .example {
+    font-weight: 300;
+  }
+
+  .definition, .example {
+    padding: 0;
+    margin: 0.2rem 0;
+  }
+}

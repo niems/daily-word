@@ -33,7 +33,7 @@ export default class App extends React.Component {
   //* firestore call
   componentDidMount() {
     const words = database.collection("daily-words");
-    const wordLimit = 3; //* number of words to retrieve
+    const wordLimit = 10; //* number of words to retrieve
 
     let wordsPromise = new Promise((resolve, reject) => {
       words.limit(wordLimit).get().then(function (querySnapshot) {
@@ -41,19 +41,25 @@ export default class App extends React.Component {
 
         querySnapshot.forEach(function (doc) {
           console.log(doc.id, ' => ', doc.data());
+          const { definition, example, timestamp } = doc.data();
+
           words.push({
-            name: doc.id, ...doc.data()
+            name: doc.id,
+            definition: definition,
+            example: example,
+            timestamp: timestamp
           });
         });
 
         if (words.length) {
+          console.log('words: ', words);
           resolve(words);
         }
       });
     });
 
-    wordsPromise.then(words => {
-      this.setState({ words });
+    wordsPromise.then(data => {
+      this.setState({ words: data });
     });
   }
 
